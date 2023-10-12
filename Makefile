@@ -1,5 +1,5 @@
 postgres:
-	sudo docker run --name golang-course -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=4200 -d postgres:alpine
+	sudo docker run --name golang-course -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=4200 -d postgres
 createdb:
 	sudo docker exec -it golang-course createdb --username=root --owner=root simple-bank
 dropdb:

@@ -22,8 +22,8 @@ func NewStore(db *sql.DB) Store {
 	}
 }
 
-func (sotre *SQLStore) execTx(ctx context.Context, fn func(*Queries) error) error {
-	tx, err := sotre.db.BeginTx(ctx, nil)
+func (store *SQLStore) execTx(ctx context.Context, fn func(*Queries) error) error {
+	tx, err := store.db.BeginTx(ctx, nil)
 	if err != nil {
 		return err
 	}
