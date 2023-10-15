@@ -12,10 +12,10 @@ import (
 )
 
 type createUserRequest struct {
-	Username string `json: "username" binding:"required,alphanum"`
-	Password string `json: "password" binding:"required,min=6"`
-	FullName string `json: "full_name" binding:"required"`
-	Email    string `json: "email" binding:"required,email"`
+	Username string `json:"username" binding:"required,alphanum"`
+	Password string `json:"password" binding:"required,min=6"`
+	FullName string `json:"full_name" binding:"required"`
+	Email    string `json:"email" binding:"required,email"`
 }
 
 type userResponse struct {
@@ -52,7 +52,7 @@ func (server *Server) createUser(ctx *gin.Context) {
 		FullName:       req.FullName,
 		Email:          req.Email,
 	}
-	arg = db.CreateUserParams{}
+	// arg = db.CreateUserParams{}
 	user, err := server.store.CreateUser(ctx, arg)
 	if err != nil {
 		if pqErr, ok := err.(*pq.Error); ok {
@@ -71,8 +71,8 @@ func (server *Server) createUser(ctx *gin.Context) {
 }
 
 type loginUserRequest struct {
-	Username string `json: "username" binding:"required,alphanum"`
-	Password string `json: "password" binding:"required,min=6"`
+	Username string `json:"username" binding:"required,alphanum"`
+	Password string `json:"password" binding:"required,min=6"`
 }
 
 type loginUserResponse struct {
